@@ -3,14 +3,16 @@ import {
   Sparkles, 
   Heart, 
   MessageCircle, 
-  Palette, 
   Truck, 
   Award, 
   CheckCircle2, 
   Camera, 
   X,
   Instagram,
-  Gift
+  Youtube,
+  ShieldCheck,
+  BadgeCheck,
+  Star
 } from 'lucide-react';
 
 interface Product {
@@ -22,6 +24,8 @@ interface Product {
   description: string;
   features: string[];
   badge?: string;
+  price: number;
+  originalPrice?: number;
 }
 
 const PRODUCTS: Product[] = [
@@ -37,7 +41,9 @@ const PRODUCTS: Product[] = [
       'Intricate Gota Patti & Mirror Lace Work',
       'Includes Diya & Shagun Roli Containers'
     ],
-    badge: 'Festive Bestseller'
+    badge: 'Festive Bestseller',
+    price: 1499,
+    originalPrice: 1999
   },
   {
     id: 'karwa-led-lamp',
@@ -51,7 +57,9 @@ const PRODUCTS: Product[] = [
       'Warm Ambient Light Wooden Base (USB)',
       'Fade-Proof Japanese UV Inks'
     ],
-    badge: 'Popular Gift'
+    badge: 'Popular Gift',
+    price: 899,
+    originalPrice: 1299
   },
   {
     id: 'leather-wallet-combo',
@@ -65,7 +73,9 @@ const PRODUCTS: Product[] = [
       'Matching Engraved Pen & Photo Keychain',
       'Luxury Velvet-Padded Gift Box'
     ],
-    badge: 'Bestseller'
+    badge: 'Bestseller',
+    price: 799,
+    originalPrice: 1199
   },
   {
     id: 'baby-birth-frame',
@@ -79,7 +89,9 @@ const PRODUCTS: Product[] = [
       'Available in Red, Pink Footprint, Black & Natural Wood',
       'Custom Baby Photo & Parents’ Names'
     ],
-    badge: 'Parent’s Choice'
+    badge: 'Parent’s Choice',
+    price: 1199,
+    originalPrice: 1699
   },
   {
     id: 'resin-pearl-plaque',
@@ -93,7 +105,9 @@ const PRODUCTS: Product[] = [
       'Lustrous Pearl Border & Golden Shimmer Edges',
       'Custom Photo Embed & Gold Lettering'
     ],
-    badge: 'Handmade'
+    badge: 'Handmade',
+    price: 999,
+    originalPrice: 1399
   },
   {
     id: 'glass-sipper-bamboo',
@@ -107,7 +121,9 @@ const PRODUCTS: Product[] = [
       'Natural Bamboo Lid with Splash-Proof Ring',
       'Permanent Water-Resistant Name Calligraphy'
     ],
-    badge: 'Trending'
+    badge: 'Trending',
+    price: 599,
+    originalPrice: 899
   },
   {
     id: 'corporate-executive-set',
@@ -121,7 +137,9 @@ const PRODUCTS: Product[] = [
       'Faux Leather Diary with Magnetic Lock',
       'Laser Precision Name / Logo Engraving'
     ],
-    badge: 'Corporate'
+    badge: 'Corporate',
+    price: 1299,
+    originalPrice: 1799
   }
 ];
 
@@ -151,7 +169,7 @@ export default function App() {
       bike: 'Motorcycle 🏍️',
       heart: 'Heart ❤️'
     };
-    const msg = `Hi Gift Case India! I want to order a custom gift with:\n• Name: ${previewName}\n• Charm: ${charms[previewCharm] || previewCharm}\n• Finish: ${previewPlateColor.toUpperCase()}\n\nPlease share mockup & details on WhatsApp.`;
+    const msg = `Hi Gift Case India! I want to order a custom gift with:\n• Name: ${previewName}\n• Charm: ${charms[previewCharm] || previewCharm}\n• Finish: ${previewPlateColor.toUpperCase()}\n\nPlease share price, mockup & details on WhatsApp.`;
     sendWhatsApp(msg);
   };
 
@@ -190,18 +208,43 @@ export default function App() {
             <a href="#customizer" className="hover:text-[#D5657B] transition-colors flex items-center gap-1 text-[#D5657B]">
               <Sparkles className="w-3.5 h-3.5 text-[#DFB75A]" /> Live Preview
             </a>
+            <a href="#trust" className="hover:text-[#D5657B] transition-colors">Trust &amp; Safety</a>
             <a href="#how-it-works" className="hover:text-[#D5657B] transition-colors">How to Order</a>
-            <a href="#contact" className="hover:text-[#D5657B] transition-colors">Contact</a>
           </nav>
 
-          {/* WhatsApp CTA */}
-          <button
-            onClick={() => sendWhatsApp('Hi Gift Case India! I would like to inquire about placing a custom gift order.')}
-            className="btn-luxury bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm cursor-pointer"
-          >
-            <MessageCircle className="w-4 h-4 fill-white text-white" />
-            <span>Order on WhatsApp</span>
-          </button>
+          {/* Social Links & WhatsApp CTA */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="hidden sm:flex items-center gap-1">
+              <a 
+                href="https://www.youtube.com/@Giftcaseindia" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-[#5A1B29] hover:text-red-600 transition-colors p-2 rounded-full hover:bg-[#FDF0F3]"
+                title="Watch on YouTube @Giftcaseindia"
+                aria-label="YouTube Channel"
+              >
+                <Youtube className="w-4 h-4 text-red-600" />
+              </a>
+              <a 
+                href="https://instagram.com/giftcaseindia" 
+                target="_blank" 
+                rel="noreferrer"
+                className="text-[#5A1B29] hover:text-[#D5657B] transition-colors p-2 rounded-full hover:bg-[#FDF0F3]"
+                title="Follow on Instagram @giftcaseindia"
+                aria-label="Instagram Profile"
+              >
+                <Instagram className="w-4 h-4 text-[#D5657B]" />
+              </a>
+            </div>
+
+            <button
+              onClick={() => sendWhatsApp('Hi Gift Case India! I would like to inquire about placing a custom gift order.')}
+              className="btn-luxury bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 sm:px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold flex items-center gap-2 shadow-sm cursor-pointer"
+            >
+              <MessageCircle className="w-4 h-4 fill-white text-white" />
+              <span>Order on WhatsApp</span>
+            </button>
+          </div>
         </div>
       </header>
 
@@ -233,9 +276,9 @@ export default function App() {
               </a>
             </div>
 
-            {/* Micro Trust badges */}
-            <div className="pt-4 flex flex-wrap items-center justify-center md:justify-start gap-5 text-xs text-[#5A1B29] font-medium">
-              <span className="flex items-center gap-1.5"><Award className="w-4 h-4 text-[#C99E3F]" /> Laser Engraved</span>
+            {/* Feature highlights */}
+            <div className="pt-4 flex flex-wrap items-center justify-center md:justify-start gap-4 text-xs text-[#5A1B29] font-medium">
+              <span className="flex items-center gap-1.5"><Sparkles className="w-4 h-4 text-[#C99E3F]" /> Laser Engraved</span>
               <span className="flex items-center gap-1.5"><Camera className="w-4 h-4 text-[#D5657B]" /> HD UV Photo Prints</span>
               <span className="flex items-center gap-1.5"><Truck className="w-4 h-4 text-emerald-600" /> Pan India Delivery</span>
             </div>
@@ -258,9 +301,14 @@ export default function App() {
                 <div>
                   <h3 className="font-display font-bold text-base text-[#41101C]">Karwa Chauth 5-Pc Thali Set</h3>
                   <p className="text-xs text-[#752A3B]">Custom Photo Thali, Channi &amp; Lota</p>
+                  <div className="flex items-baseline gap-2 mt-1">
+                    <span className="font-bold text-[#41101C] text-sm">₹1,499</span>
+                    <span className="text-[11px] text-[#752A3B]/60 line-through">₹1,999</span>
+                    <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1 py-0.2 rounded">Save 25%</span>
+                  </div>
                 </div>
                 <button 
-                  onClick={() => sendWhatsApp('Hi Gift Case India! I would like to order the Karwa Chauth Pooja Thali Set.')}
+                  onClick={() => sendWhatsApp('Hi Gift Case India! I would like to order the Karwa Chauth Pooja Thali Set (₹1,499).')}
                   className="bg-[#D5657B] hover:bg-[#B54961] text-white text-xs font-bold px-3.5 py-2 rounded-full shadow-sm cursor-pointer"
                 >
                   Order Now
@@ -329,7 +377,25 @@ export default function App() {
                     <h3 className="font-display font-bold text-lg text-[#41101C] leading-snug">
                       {product.name}
                     </h3>
-                    <p className="text-xs text-[#752A3B] mt-1 leading-relaxed">
+
+                    {/* Price display */}
+                    <div className="flex items-baseline gap-2 mt-2">
+                      <span className="text-lg font-bold text-[#41101C]">
+                        ₹{product.price.toLocaleString('en-IN')}
+                      </span>
+                      {product.originalPrice && (
+                        <span className="text-xs text-[#752A3B]/60 line-through">
+                          ₹{product.originalPrice.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                      {product.originalPrice && (
+                        <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+                          Save {Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100)}%
+                        </span>
+                      )}
+                    </div>
+
+                    <p className="text-xs text-[#752A3B] mt-2 leading-relaxed">
                       {product.description}
                     </p>
 
@@ -353,7 +419,7 @@ export default function App() {
                       Details
                     </button>
                     <button
-                      onClick={() => sendWhatsApp(`Hi Gift Case India! I want to order the *${product.name}*. Please share details & mockup.`)}
+                      onClick={() => sendWhatsApp(`Hi Gift Case India! I want to order the *${product.name}* (Price: ₹${product.price.toLocaleString('en-IN')}). Please share details & mockup.`)}
                       className="btn-luxury bg-[#25D366] hover:bg-[#20bd5a] text-white text-xs font-bold py-2 rounded-xl flex items-center justify-center gap-1 shadow-xs cursor-pointer"
                     >
                       <MessageCircle className="w-3.5 h-3.5 fill-white text-white" />
@@ -364,6 +430,26 @@ export default function App() {
 
               </div>
             ))}
+          </div>
+
+          {/* Product Footer Small Badges */}
+          <div className="mt-12 pt-8 border-t border-[#F9DCE2] flex flex-wrap items-center justify-center gap-4 sm:gap-8">
+            <div className="inline-flex items-center gap-2 bg-[#FFF9F6] border border-[#F9DCE2] px-4 py-2 rounded-full text-xs font-semibold text-[#41101C] shadow-xs">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              <span>100% Safe &amp; Secure</span>
+            </div>
+            <div className="inline-flex items-center gap-2 bg-[#FFF9F6] border border-[#F9DCE2] px-4 py-2 rounded-full text-xs font-semibold text-[#41101C] shadow-xs">
+              <Award className="w-4 h-4 text-[#C99E3F] shrink-0" />
+              <span>Premium Quality</span>
+            </div>
+            <div className="inline-flex items-center gap-2 bg-[#FFF9F6] border border-[#F9DCE2] px-4 py-2 rounded-full text-xs font-semibold text-[#41101C] shadow-xs">
+              <Heart className="w-4 h-4 text-[#D5657B] fill-[#D5657B] shrink-0" />
+              <span>Made in India</span>
+            </div>
+            <div className="inline-flex items-center gap-2 bg-[#FFF9F6] border border-[#F9DCE2] px-4 py-2 rounded-full text-xs font-semibold text-[#41101C] shadow-xs">
+              <Truck className="w-4 h-4 text-blue-600 shrink-0" />
+              <span>Pan-India Safe Delivery</span>
+            </div>
           </div>
 
         </div>
@@ -490,25 +576,87 @@ export default function App() {
         </div>
       </section>
 
+      {/* ================= TRUST & CREDIBILITY SECTION ================= */}
+      <section id="trust" className="py-14 bg-white border-t border-[#F9DCE2]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          
+          <div className="text-center max-w-xl mx-auto mb-10">
+            <div className="inline-flex items-center gap-1.5 text-xs font-bold text-[#D5657B] uppercase tracking-wider mb-2">
+              <BadgeCheck className="w-4 h-4" />
+              <span>Why Customers Choose Us</span>
+            </div>
+            <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#41101C]">
+              Trust &amp; Credibility
+            </h2>
+            <p className="text-xs sm:text-sm text-[#752A3B] mt-1">
+              Over 50,000+ personalised gifts lovingly crafted and delivered across India.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2] flex flex-col items-center text-center">
+              <div className="w-11 h-11 rounded-full bg-[#FDF0F3] border border-[#F2BAC7] flex items-center justify-center mb-3 text-emerald-600">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <h3 className="font-display font-bold text-base text-[#41101C]">100% Safe &amp; Secure</h3>
+              <p className="text-xs text-[#752A3B] mt-1 leading-relaxed">
+                Multi-layer protective bubble transit packing to ensure every fragile keepsake arrives undamaged.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2] flex flex-col items-center text-center">
+              <div className="w-11 h-11 rounded-full bg-[#FDF0F3] border border-[#F2BAC7] flex items-center justify-center mb-3 text-[#C99E3F]">
+                <Award className="w-6 h-6" />
+              </div>
+              <h3 className="font-display font-bold text-base text-[#41101C]">Premium Quality</h3>
+              <p className="text-xs text-[#752A3B] mt-1 leading-relaxed">
+                Precision fiber laser engraving, non-yellowing crystal epoxy, and Japanese UV fade-proof inks.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2] flex flex-col items-center text-center">
+              <div className="w-11 h-11 rounded-full bg-[#FDF0F3] border border-[#F2BAC7] flex items-center justify-center mb-3 text-[#D5657B]">
+                <Heart className="w-6 h-6 fill-[#D5657B]" />
+              </div>
+              <h3 className="font-display font-bold text-base text-[#41101C]">Made in India</h3>
+              <p className="text-xs text-[#752A3B] mt-1 leading-relaxed">
+                Proudly crafted in India by dedicated artisans, supporting local artistry and fine craft tradition.
+              </p>
+            </div>
+
+            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2] flex flex-col items-center text-center">
+              <div className="w-11 h-11 rounded-full bg-[#FDF0F3] border border-[#F2BAC7] flex items-center justify-center mb-3 text-[#41101C]">
+                <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+              </div>
+              <h3 className="font-display font-bold text-base text-[#41101C]">Free Mockup Preview</h3>
+              <p className="text-xs text-[#752A3B] mt-1 leading-relaxed">
+                Check and approve your custom digital design on WhatsApp before we begin final production.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* ================= HOW TO ORDER ================= */}
-      <section id="how-it-works" className="py-14 bg-white border-t border-[#F9DCE2]">
+      <section id="how-it-works" className="py-14 bg-[#FFF9F6] border-t border-[#F9DCE2]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           
           <h2 className="font-display font-bold text-2xl sm:text-3xl text-[#41101C]">How to Order</h2>
           <p className="text-xs sm:text-sm text-[#752A3B] mt-1">Easy 3-step ordering process on WhatsApp</p>
 
           <div className="grid sm:grid-cols-3 gap-4 mt-8">
-            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2]">
+            <div className="p-5 rounded-2xl bg-white border border-[#F9DCE2] shadow-xs">
               <div className="w-8 h-8 rounded-full bg-[#41101C] text-white font-bold text-sm flex items-center justify-center mx-auto mb-3">1</div>
               <h3 className="font-bold text-sm text-[#41101C]">Pick Gift</h3>
               <p className="text-xs text-[#752A3B] mt-1">Select your preferred item from our catalog.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2]">
+            <div className="p-5 rounded-2xl bg-white border border-[#F9DCE2] shadow-xs">
               <div className="w-8 h-8 rounded-full bg-[#D5657B] text-white font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
               <h3 className="font-bold text-sm text-[#41101C]">Send Name &amp; Photo</h3>
               <p className="text-xs text-[#752A3B] mt-1">Share customization details with our team on WhatsApp.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-[#FFF9F6] border border-[#F9DCE2]">
+            <div className="p-5 rounded-2xl bg-white border border-[#F9DCE2] shadow-xs">
               <div className="w-8 h-8 rounded-full bg-[#DFB75A] text-[#41101C] font-bold text-sm flex items-center justify-center mx-auto mb-3">3</div>
               <h3 className="font-bold text-sm text-[#41101C]">Approve &amp; Dispatch</h3>
               <p className="text-xs text-[#752A3B] mt-1">Approve your free digital mockup before fast dispatch.</p>
@@ -526,7 +674,7 @@ export default function App() {
             <img 
               src="/assets/logo.png" 
               alt="Gift Case India" 
-              className="w-12 h-12 rounded-full object-cover bg-white" 
+              className="w-12 h-12 rounded-full object-cover bg-white border border-white/20 shadow-sm" 
             />
             <div className="text-left">
               <span className="block font-display font-bold text-xl text-white">Gift Case India</span>
@@ -538,7 +686,8 @@ export default function App() {
             Personalised gifts, festive hampers, leather accessories &amp; custom keepsakes dispatched across India.
           </p>
 
-          <div className="flex items-center justify-center gap-4 text-xs font-semibold">
+          {/* Social Links & WhatsApp */}
+          <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-semibold">
             <button 
               onClick={() => sendWhatsApp('Hi Gift Case India! I would like to order a custom gift.')}
               className="bg-[#25D366] hover:bg-[#20bd5a] text-white px-5 py-2.5 rounded-full flex items-center gap-1.5 shadow-sm cursor-pointer"
@@ -547,12 +696,23 @@ export default function App() {
               <span>Chat &amp; Order on WhatsApp</span>
             </button>
             <a 
+              href="https://www.youtube.com/@Giftcaseindia" 
+              target="_blank" 
+              rel="noreferrer"
+              className="bg-white/10 hover:bg-red-600/30 text-white px-4 py-2.5 rounded-full flex items-center gap-1.5 transition-colors border border-white/10"
+              title="YouTube @Giftcaseindia"
+            >
+              <Youtube className="w-4 h-4 text-red-400" />
+              <span>YouTube</span>
+            </a>
+            <a 
               href="https://instagram.com/giftcaseindia" 
               target="_blank" 
               rel="noreferrer"
-              className="bg-white/10 hover:bg-white/20 text-white px-4 py-2.5 rounded-full flex items-center gap-1.5 transition-colors"
+              className="bg-white/10 hover:bg-[#D5657B]/30 text-white px-4 py-2.5 rounded-full flex items-center gap-1.5 transition-colors border border-white/10"
+              title="Instagram @giftcaseindia"
             >
-              <Instagram className="w-4 h-4" />
+              <Instagram className="w-4 h-4 text-pink-300" />
               <span>Instagram</span>
             </a>
           </div>
@@ -590,7 +750,24 @@ export default function App() {
             </div>
 
             <h3 className="font-display font-bold text-xl text-[#41101C]">{activeModalProduct.name}</h3>
-            <p className="text-xs text-[#752A3B] mt-1">{activeModalProduct.description}</p>
+
+            <div className="flex items-baseline gap-2 mt-1.5">
+              <span className="text-xl font-bold text-[#41101C]">
+                ₹{activeModalProduct.price.toLocaleString('en-IN')}
+              </span>
+              {activeModalProduct.originalPrice && (
+                <span className="text-xs text-[#752A3B]/60 line-through">
+                  ₹{activeModalProduct.originalPrice.toLocaleString('en-IN')}
+                </span>
+              )}
+              {activeModalProduct.originalPrice && (
+                <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.5 rounded">
+                  Save {Math.round(((activeModalProduct.originalPrice - activeModalProduct.price) / activeModalProduct.originalPrice) * 100)}%
+                </span>
+              )}
+            </div>
+
+            <p className="text-xs text-[#752A3B] mt-2">{activeModalProduct.description}</p>
 
             <div className="mt-3 space-y-1">
               {activeModalProduct.features.map((f, i) => (
@@ -603,13 +780,13 @@ export default function App() {
 
             <button
               onClick={() => {
-                sendWhatsApp(`Hi Gift Case India! I want to customize and order the *${activeModalProduct.name}*. Please send details.`);
+                sendWhatsApp(`Hi Gift Case India! I want to customize and order the *${activeModalProduct.name}* (Price: ₹${activeModalProduct.price.toLocaleString('en-IN')}). Please send details.`);
                 setActiveModalProduct(null);
               }}
-              className="w-full mt-5 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-full text-xs flex items-center justify-center gap-2 shadow-sm cursor-pointer"
+              className="w-full mt-4 bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold py-3 rounded-full text-xs flex items-center justify-center gap-2 shadow-sm cursor-pointer"
             >
               <MessageCircle className="w-4 h-4 fill-white text-white" />
-              <span>Order on WhatsApp</span>
+              <span>Order on WhatsApp (₹{activeModalProduct.price.toLocaleString('en-IN')})</span>
             </button>
           </div>
         </div>
