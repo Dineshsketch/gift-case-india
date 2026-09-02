@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+
+.font-display {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+}
+
+.font-heading {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.font-script {
+  font-family: 'Great Vibes', cursive;
+}
+
+.font-indic {
+  font-family: 'Rozha One', serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FFF8F2;
+}
+::-webkit-scrollbar-thumb {
+  background: #D5657B;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #5A1B29;
+}
+
+/* Luxury button interactions */
+.btn-luxury {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-luxury:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px -6px rgba(90, 27, 41, 0.35);
+}
+.btn-luxury:active {
+  transform: translateY(1px) scale(0.99);
+}
+
+/* Card Hover Animations */
+.product-card {
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+}
+.product-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Floating animation */
+@keyframes subtleFloat {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(1deg); }
+}
+.floating-badge {
+  animation: subtleFloat 5s ease-in-out infinite;
+}
+
+/* Pulse Glow */
+@keyframes pulseGold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(223, 183, 90, 0.6); }
+  50% { box-shadow: 0 0 0 8px rgba(223, 183, 90, 0); }
+}
+.pulse-gold {
+  animation: pulseGold 2.5s infinite;
+}
+
+/* Metallic Brass Plate Texture */
+.brass-plate {
+  background: linear-gradient(135deg, #ecd295 0%, #dfb75a 45%, #fff1ce 55%, #c99e3f 100%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.25);
+  border: 1px solid #a67e28;
+}
+
+/* Rose Gold Plate */
+.rosegold-plate {
+  background: linear-gradient(135deg, #f7d2d7 0%, #e8a2af 45%, #fff0f3 55%, #cb7a8a 100%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.2);
+  border: 1px solid #b65f72;
+}
+
+/* Silver Chrome Plate */
+.silver-plate {
+  background: linear-gradient(135deg, #f0f0f0 0%, #d4d4d8 45%, #ffffff 55%, #a1a1aa 100%);
+  box-shadow: inset 0 1px 2px rgba(255,255,255,0.8), 0 4px 10px rgba(0,0,0,0.2);
+  border: 1px solid #71717a;
+}
+
+/* Glass effect */
+.glass-nav {
+  background: rgba(255, 248, 242, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
