@@ -302,8 +302,8 @@ export default function App() {
                   <h3 className="font-display font-bold text-base text-[#41101C]">Karwa Chauth 5-Pc Thali Set</h3>
                   <p className="text-xs text-[#752A3B]">Custom Photo Thali, Channi &amp; Lota</p>
                   <div className="flex items-baseline gap-2 mt-1">
-                    <span className="font-bold text-[#41101C] text-sm">₹1,499</span>
-                    <span className="text-[11px] text-[#752A3B]/60 line-through">₹1,999</span>
+                    <span className="font-bold text-[#41101C] text-sm">₹999</span>
+                    <span className="text-[11px] text-[#752A3B]/60 line-through">₹1,100</span>
                     <span className="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-1 py-0.2 rounded">Save 25%</span>
                   </div>
                 </div>
