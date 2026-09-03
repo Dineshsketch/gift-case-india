@@ -42,8 +42,8 @@ const PRODUCTS: Product[] = [
       'Includes Diya & Shagun Roli Containers'
     ],
     badge: 'Festive Bestseller',
-    price: 1499,
-    originalPrice: 1999
+    price: 999,
+    originalPrice: 1100
   },
   {
     id: 'karwa-led-lamp',
@@ -58,8 +58,8 @@ const PRODUCTS: Product[] = [
       'Fade-Proof Japanese UV Inks'
     ],
     badge: 'Popular Gift',
-    price: 899,
-    originalPrice: 1299
+    price: 699,
+    originalPrice: 800
   },
   {
     id: 'leather-wallet-combo',
@@ -74,8 +74,8 @@ const PRODUCTS: Product[] = [
       'Luxury Velvet-Padded Gift Box'
     ],
     badge: 'Bestseller',
-    price: 799,
-    originalPrice: 1199
+    price: 699,
+    originalPrice: 800
   },
   {
     id: 'baby-birth-frame',
@@ -90,8 +90,8 @@ const PRODUCTS: Product[] = [
       'Custom Baby Photo & Parents’ Names'
     ],
     badge: 'Parent’s Choice',
-    price: 1199,
-    originalPrice: 1699
+    price: 499,
+    originalPrice: 599
   },
   {
     id: 'resin-pearl-plaque',
@@ -106,8 +106,8 @@ const PRODUCTS: Product[] = [
       'Custom Photo Embed & Gold Lettering'
     ],
     badge: 'Handmade',
-    price: 999,
-    originalPrice: 1399
+    price: 649,
+    originalPrice: 800
   },
   {
     id: 'glass-sipper-bamboo',
@@ -138,8 +138,8 @@ const PRODUCTS: Product[] = [
       'Laser Precision Name / Logo Engraving'
     ],
     badge: 'Corporate',
-    price: 1299,
-    originalPrice: 1799
+    price: 849,
+    originalPrice: 1000
   }
 ];
 
